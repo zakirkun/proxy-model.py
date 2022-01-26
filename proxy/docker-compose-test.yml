@@ -98,6 +98,7 @@ services:
       NEON_OPERATOR_KEYFILE: '/root/.config/solana/id.json'
       NEON_ETH_MAX_AMOUNT: 10
       TEST_FAUCET_INIT_NEON_BALANCE: 10000
+      NEON_LOG: 'json'
     hostname: faucet
     expose:
       - "3333"
