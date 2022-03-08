@@ -173,9 +173,8 @@ class Test_Neon_Faucet(unittest.TestCase):
         os.environ['NEON_ERC20_MAX_AMOUNT'] = '1000'
         os.environ['FAUCET_SOLANA_ENABLE'] = 'true'
         os.environ['SOLANA_URL'] = os.environ.get('SOLANA_URL', 'http://solana:8899')
+        os.environ['SOLANA_COMMITMENT'] = os.environ.get('SOLANA_COMMITMENT', 'processed')
         os.environ['EVM_LOADER'] = os.environ.get('EVM_LOADER', '53DfF883gyixYNXnM7s5xhdeyV8mVk9T4i2hGV9vG9io')
-        os.environ['NEON_TOKEN_MINT'] = 'HPsV9Deocecw3GeZv1FkAPNCBRfuVyfw9MMwjwRe1xaU'
-        os.environ['NEON_TOKEN_MINT_DECIMALS'] = '9'
         os.environ['NEON_OPERATOR_KEYFILE'] = '/root/.config/solana/id.json'
         os.environ['NEON_ETH_MAX_AMOUNT'] = '10'
         self.faucet = subprocess.Popen(['faucet', 'run', '--workers', '1'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
