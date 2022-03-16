@@ -1,5 +1,5 @@
-ARG SOLANA_REVISION=v1.8.12-testnet
-ARG EVM_LOADER_REVISION=stable
+ARG SOLANA_REVISION=ci-tracing-api-v0.6.0
+ARG EVM_LOADER_REVISION=ci-tracing-api-v0.6.0
 
 FROM neonlabsorg/solana:${SOLANA_REVISION} AS cli
 
