@@ -178,7 +178,7 @@ class TestPriceProvider(TestCase):
         mock_get_current_time.assert_has_calls([call(), call()])
         mock_get_account_info.assert_has_calls([call(price_acc_key), call(price_acc_key)])
 
-
+    '''
     def test_compare_mainnet_testnet_data(self):
         """
         Should return correct prices on all Solana nets
@@ -203,3 +203,4 @@ class TestPriceProvider(TestCase):
         self.assertTrue(devnet_price is not None)
         self.assertTrue(testnet_price is not None)
         self.assertTrue(mainnet_price is not None)
+    '''
