@@ -29,7 +29,7 @@ esac
 done
 
 export REVISION=$(git rev-parse HEAD)
-PROXY_IMAGE=neonlabsorg/proxy:${IMAGETAG:-$REVISION}
+PROXY_IMAGE=neonlabsorg/proxy:ankr
 
 UNISWAP_V2_CORE_IMAGE=neonlabsorg/uniswap-v2-core:stable
 # Refreshing uniswap-v2-core image is required to run .buildkite/steps/deploy-test.sh locally

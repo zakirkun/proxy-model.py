@@ -1,5 +1,5 @@
-ARG SOLANA_REVISION=v1.9.12-testnet-with_trx_cap
-ARG NEON_EVM_COMMIT=latest
+ARG SOLANA_REVISION=v1.9.12-testnet-bn256-syscalls
+ARG NEON_EVM_COMMIT=ankr
 
 FROM neonlabsorg/solana:${SOLANA_REVISION} AS cli
 

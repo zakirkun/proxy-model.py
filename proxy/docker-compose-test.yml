@@ -3,7 +3,7 @@ version: "3"
 services:
   solana:
     container_name: solana
-    image: neonlabsorg/solana:${SOLANA_REVISION:-v1.9.12-testnet-with_trx_cap}
+    image: neonlabsorg/solana:v1.9.12-testnet-bn256-syscalls
     environment:
       SOLANA_URL: http://solana:8899
       RUST_LOG: solana_runtime::system_instruction_processor=trace,solana_runtime::message_processor=debug,solana_bpf_loader=debug,solana_rbpf=debug
@@ -26,7 +26,7 @@ services:
 
   evm_loader:
     container_name: evm_loader
-    image: neonlabsorg/evm_loader:${NEON_EVM_COMMIT:-latest}
+    image: neonlabsorg/evm_loader:ankr
     environment:
       - SOLANA_URL=http://solana:8899
     networks:
@@ -60,7 +60,7 @@ services:
 
   dbcreation:
     container_name: dbcreation
-    image: neonlabsorg/proxy:${REVISION}
+    image: neonlabsorg/proxy:ankr
     environment:
       SOLANA_URL: http://solana:8899
       POSTGRES_DB: neon-db
@@ -78,7 +78,7 @@ services:
 
   proxy:
     container_name: proxy
-    image: neonlabsorg/proxy:${REVISION}
+    image: neonlabsorg/proxy:ankr
     environment:
       SOLANA_URL: http://solana:8899
       FAUCET_URL: http://faucet:3333
@@ -86,7 +86,7 @@ services:
       POSTGRES_USER: neon-proxy
       POSTGRES_PASSWORD: neon-proxy-pass
       LOG_NEON_CLI_DEBUG: "YES"
-      FUZZING_BLOCKHASH: "YES"
+      FUZZING_BLOCKHASH: "NO"
       CONFIG: ci
       PP_SOLANA_URL: ${CI_PP_SOLANA_URL:-https://api.devnet.solana.com}
       PYTH_MAPPING_ACCOUNT: ${CI_PYTH_MAPPING_ACCOUNT:-BmA9Z6FjioHJPpjT39QazZyhDRUdZy2ezwx4GiDdE2u2}
@@ -105,7 +105,7 @@ services:
       indexer:
         condition: service_started
     ports:
-      - 127.0.0.1:9090:9090
+      - 0.0.0.0:9090:9090
     expose:
       - "8888"
       - "9090"
@@ -127,7 +127,7 @@ services:
       TEST_FAUCET_INIT_NEON_BALANCE: 100000
     hostname: faucet
     ports:
-      - 3333
+      - 0.0.0.0:3333:3333
     expose:
       - "3333"
     networks:
@@ -139,7 +139,7 @@ services:
 
   airdropper:
     container_name: airdropper
-    image: neonlabsorg/proxy:${REVISION}
+    image: neonlabsorg/proxy:ankr
     environment:
       POSTGRES_DB: neon-db
       POSTGRES_USER: neon-proxy
@@ -168,7 +168,7 @@ services:
 
   indexer:
     container_name: indexer
-    image: neonlabsorg/proxy:${REVISION}
+    image: neonlabsorg/proxy:ankr
     environment:
       SOLANA_URL: http://solana:8899
       POSTGRES_DB: neon-db
