@@ -12,9 +12,7 @@ if [[ ${BUILDKITE_BRANCH} == "master" ]]; then
 elif [[ ${BUILDKITE_BRANCH} == "develop" ]]; then
     TAG=latest
 else
-    TAG=${BUILDKITE_BRANCH}
+    TAG=ankr
 fi
 
-docker pull neonlabsorg/proxy:${REVISION}
-docker tag neonlabsorg/proxy:${REVISION} neonlabsorg/proxy:${TAG}
-docker push neonlabsorg/proxy:${TAG}
+docker push neonlabsorg/proxy:ankr
