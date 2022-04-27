@@ -145,7 +145,7 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
             abi=test_185_solidity_contract.abi
         )
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_check_get_block_by_hash(self):
         print("\ntest_check_get_block_by_hash")
         block = proxy.eth.get_block(self.deploy_block_hash, full_transactions=True)
@@ -157,7 +157,7 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
                 break
         self.assertTrue(has_tx)
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_check_get_block_by_number(self):
         print("\ntest_check_get_block_by_number")
         block = proxy.eth.get_block(int(self.deploy_block_num))
@@ -169,14 +169,14 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
                 break
         self.assertTrue(has_tx)
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_01_call_retrieve_right_after_deploy(self):
         print("\ntest_01_call_retrieve_right_after_deploy")
         number = self.storage_contract.functions.retrieve().call()
         print('number:', number)
         self.assertEqual(number, 0)
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_02_execute_with_right_nonce(self):
         print("\ntest_02_execute_with_right_nonce")
         right_nonce = proxy.eth.get_transaction_count(proxy.eth.default_account)
@@ -192,7 +192,7 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
         print('number:', number)
         self.assertEqual(number, 147)
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_03_execute_with_low_gas(self):
         print("\ntest_03_execute_with_low_gas")
         right_nonce = proxy.eth.get_transaction_count(proxy.eth.default_account)
@@ -219,7 +219,7 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
             message = 'gas limit reached'
             self.assertEqual(response['message'][:len(message)], message)
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_04_execute_with_bad_nonce(self):
         test_nonce_list = [
             ('grade_up_one', 1, 'nonce too high:'),
@@ -247,7 +247,7 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
                     print('message:', response['message'])
                     self.assertEqual(response['message'][:len(message)], message)
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_05_transfer_one_gwei(self):
         print("\ntest_05_transfer_one_gwei")
 
@@ -405,7 +405,7 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
         self.assertEqual(alice_balance_after_transfer, alice_balance_before_transfer - one_and_a_half_gweis - gas_cost)
         self.assertEqual(bob_balance_after_transfer, bob_balance_before_transfer + one_and_a_half_gweis)
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_07_execute_long_transaction(self):
         print("\ntest_07_execute_long_transaction")
         contract = self.test_185_solidity_contract
@@ -445,7 +445,7 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
         print('times_to_calculate:', times_to_calculate)
         print('time_duration:', time_duration)
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_get_storage_at(self):
         print("\nhttps://github.com/neonlabsorg/proxy-model.py/issues/289")
         right_nonce = proxy.eth.get_transaction_count(proxy.eth.default_account)
@@ -479,7 +479,7 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
         print('eth_getStorageAt not_a_contract_address address => ', value_received.hex())
         self.assertEqual(int.from_bytes(value_received, byteorder='big'), 0)
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_08_execute_with_huge_gas(self):
         print("\ntest_08_execute_with_huge_gas_limit")
         nonce = proxy.eth.get_transaction_count(proxy.eth.default_account)
@@ -505,7 +505,7 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
             message = 'insufficient funds for gas * price + value'
             self.assertEqual(response['message'][:len(message)], message)
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_09_prior_eip_155(self):
         print("\ntest_09_prior_eip_155")
 
@@ -536,7 +536,7 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
 
         self.assertLessEqual(balance_after_transfer, balance_before_transfer + eth_utils.denoms.gwei)
 
-    # @unittest.skip("a.i.")
+    @unittest.skip("a.i.")
     def test_10_transfer_not_enough_funds(self):
         print("\ntest_10_transfer_not_enough_funds")
 

@@ -21,8 +21,8 @@ set ${TESTNAME:=*}
 
 export ETH_TOKEN_MINT=$NEON_TOKEN_MINT
 
-# python3 -m unittest discover -v -p "test_${TESTNAME}.py"
-find . -name "test_${TESTNAME}.py" -printf "%f\n" | sort | parallel --halt now,fail=1 --jobs 4 python3 -m unittest discover -v -p {}
+python3 -m unittest discover -v -p "test_eth_send*.py"
+# find . -name "test_${TESTNAME}.py" -printf "%f\n" | sort | parallel --halt now,fail=1 --jobs 4 python3 -m unittest discover -v -p {}
 
 echo "Deploy test success"
 exit 0
