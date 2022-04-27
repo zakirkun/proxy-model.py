@@ -184,6 +184,7 @@ class Test_eth_sendRawTransaction(unittest.TestCase):
         solana_client = SolanaClient(solana_url)
         receipt = solana_client.get_confirmed_transaction(response['result'][0])
         print(json.dumps(receipt, indent=3))
+        self.assertEqual(receipt['result']['meta']['innerInstructions'][0]['index'], 3)
 
 
 if __name__ == '__main__':
